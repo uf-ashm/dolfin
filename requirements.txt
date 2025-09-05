@@ -1,0 +1,9 @@
+dash
+dash-mantine-components==0.11.0
+dash-bootstrap-components
+gunicorn
+pandas
+dash-chart-editor
+openai
+dash-ag-grid
+redis

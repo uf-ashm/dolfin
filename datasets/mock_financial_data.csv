@@ -1,0 +1,37 @@
+company,ga_code,ga_name,consolidated_accounts,sum_eje,sum_upload,category
+UF,11000,Recurring License Fees,2120349.03,-108903.23,2300134.56,Revenue
+UF,12000,External Sales,5650000.00,-45000.00,5695000.00,Revenue
+UF,21000,Office Rent,890000.00,15000.00,875000.00,Operating Expenses
+UF,22000,Marketing Costs,450000.00,25000.00,425000.00,Operating Expenses
+UF,23000,Professional Services,320000.00,8000.00,312000.00,Operating Expenses
+UF,30000,Total Assets,12500000.00,0.00,12500000.00,Assets
+Company A,11000,Recurring License Fees,1850000.00,-95000.00,1945000.00,Revenue
+Company A,12000,External Sales,3200000.00,-25000.00,3225000.00,Revenue
+Company A,21000,Office Rent,620000.00,18000.00,602000.00,Operating Expenses
+Company A,22000,Marketing Costs,380000.00,22000.00,358000.00,Operating Expenses
+Company A,23000,Professional Services,210000.00,5000.00,205000.00,Operating Expenses
+Company A,30000,Total Assets,8900000.00,0.00,8900000.00,Assets
+Company B,11000,Recurring License Fees,920000.00,-35000.00,955000.00,Revenue
+Company B,12000,External Sales,2100000.00,-15000.00,2115000.00,Revenue
+Company B,21000,Office Rent,420000.00,8000.00,412000.00,Operating Expenses
+Company B,22000,Marketing Costs,180000.00,12000.00,168000.00,Operating Expenses
+Company B,23000,Professional Services,145000.00,3000.00,142000.00,Operating Expenses
+Company B,30000,Total Assets,5200000.00,0.00,5200000.00,Assets
+Company C,11000,Recurring License Fees,1200000.00,-55000.00,1255000.00,Revenue
+Company C,12000,External Sales,2800000.00,-20000.00,2820000.00,Revenue
+Company C,21000,Office Rent,520000.00,12000.00,508000.00,Operating Expenses
+Company C,22000,Marketing Costs,240000.00,15000.00,225000.00,Operating Expenses
+Company C,23000,Professional Services,180000.00,4000.00,176000.00,Operating Expenses
+Company C,30000,Total Assets,7100000.00,0.00,7100000.00,Assets
+Company D,11000,Recurring License Fees,750000.00,-25000.00,775000.00,Revenue
+Company D,12000,External Sales,1900000.00,-10000.00,1910000.00,Revenue
+Company D,21000,Office Rent,350000.00,6000.00,344000.00,Operating Expenses
+Company D,22000,Marketing Costs,120000.00,8000.00,112000.00,Operating Expenses
+Company D,23000,Professional Services,95000.00,2000.00,93000.00,Operating Expenses
+Company D,30000,Total Assets,4200000.00,0.00,4200000.00,Assets
+Company E,11000,Recurring License Fees,680000.00,-22000.00,702000.00,Revenue
+Company E,12000,External Sales,1650000.00,-8000.00,1658000.00,Revenue
+Company E,21000,Office Rent,310000.00,5000.00,305000.00,Operating Expenses
+Company E,22000,Marketing Costs,95000.00,6000.00,89000.00,Operating Expenses
+Company E,23000,Professional Services,75000.00,1500.00,73500.00,Operating Expenses
+Company E,30000,Total Assets,3800000.00,0.00,3800000.00,Assets
