@@ -1,10 +1,10 @@
-This application uses [Dash Chart Editor](https://github.com/BSd3v/dash-chart-editor) and the [OpenAI Python library](https://github.com/openai/openai-python) to build an application allowing users to ask questions about a dataset and persist views of their dataset with analytics associated.
-
-Once a dataset is uploaded, context on that dataset is added to the prompt for the chat window, and users can interact with the dataset with natural language. After building charts, users can click the "Copy link" button to save those charts to a permanent link, using Redis to save state.
+This application uses [Dash Chart Editor](https://github.com/BSd3v/dash-chart-editor)
 
 <p align="center">
-    <img src="screenshots/4.png", width=500>
+  finbot -> dolfin : AI-powered financial analysis tool for YTD excel workbooks
 </p>
+
+Once a dataset is uploaded, context on that dataset is added to the prompt for the chat window, and users can interact with the dataset with natural language. After building charts, users can click the "Copy link" button to save those charts to a permanent link, using Redis to save state.
 
 
 ## Usage
