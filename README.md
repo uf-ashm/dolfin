@@ -1,11 +1,11 @@
 This application uses [Dash Chart Editor](https://github.com/BSd3v/dash-chart-editor) and the [OpenAI Python library](https://github.com/openai/openai-python) to build ad-hoc plots, gain key AI insights and allow users to ask questions. 
 
-# dolfin: An AI-powered internal financial analysis tool for UF's YTD excel workbook
+## dolfin: an internal finance insights tool for UF's YTD excel workbook
 
 Once a dataset is uploaded, context on that dataset is added to the prompt for the chat window, and users can interact with the dataset with natural language. After building charts, users can click the "Copy link" button to save those charts to a permanent link, using Redis to save state.
 
 
-## Usage
+### Usage
 > Note: You must provide an [OpenAI API key](https://platform.openai.com/account/api-keys) as an environment variable at `$OPEN_AI_KEY`.
 
 Install the dependencies with:
