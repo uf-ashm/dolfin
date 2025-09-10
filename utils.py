@@ -1,5 +1,6 @@
 import base64
 import io
+import os
 
 import dash_ag_grid as dag
 import dash_bootstrap_components as dbc
@@ -12,16 +13,85 @@ def chat_container(text, type_):
     return html.Div(text, id="chat-item", className=type_)
 
 
+def navbar():
+    logo_path = os.path.join('assets', 'United Fintech_id-LRcwe1b_5.png')
+    return dbc.Navbar(
+        dbc.Container([
+            html.Div([
+                html.Img(src="/assets/United Fintech_id-LRcwe1b_5.png", height="40px"),
+            ], style={"flex": "0 0 auto", "display": "flex", "alignItems": "center"}),
+            html.Div(
+                html.H6([
+                    html.B("DOLFIN"),
+                    " | AI financial insights"
+                ],
+                    style={
+                        "color": "white",
+                        "margin": 0,
+                        "fontWeight": 300,
+                        "fontSize": "1.2rem",
+                        "textAlign": "center",
+                    },
+                ),
+                style={
+                    "flex": "1 1 auto",
+                    "display": "flex",
+                    "justifyContent": "center",
+                    "alignItems": "center",
+                },
+            ),
+            html.Div([], style={"flex": "0 0 40px"}),  # Spacer for symmetry
+        ], fluid=True, style={"display": "flex", "alignItems": "center"}),
+        color="#211E32",
+        dark=True,
+        className="",
+        style={
+            "backgroundColor": "#211E32",
+            "background": "linear-gradient(90deg, #211E32 0%, #26233B 50%, #1B192C 100%)",
+            "padding": "0.5rem 0",
+            "marginBottom": 0,
+            "boxShadow": "inset 0 -1px 0 rgba(255,255,255,0.04)",  # tiny bottom separator
+        },
+    )
+
+
+def mini_navbar_note():
+    return html.Div(
+        [
+            html.Span([
+                "Note: Only upload ",
+                html.B("mock data"),
+                " as Dolfin is currently using a public OpenAI API key for development & testing purposes, but we will switch to UF's private OpenAI API key soon"
+            ])
+        ],
+        style={
+            "background": "#dae2f5",
+            "color": "black",
+            "padding": "0.4rem 1rem",
+            "fontSize": "0.95rem",
+            "fontWeight": 400,
+            "width": "100%",
+            "position": "sticky",
+            "top": 0,
+            "zIndex": 1001,
+            "textAlign": "center",
+            "boxShadow": "0 2px 4px rgba(0,0,0,0.03)",
+            "marginTop": 0
+        }
+    )
+
+
 def jumbotron():
     return html.Div(
         dbc.Container(
             [
-                html.H6("FinBot v.1.1 (Dash & OpenAI)", className="display-6"),
+                # Title moved to navbar
                 dcc.Markdown(
                     "Uses [Dash Chart Editor](https://github.com/BSd3v/dash-chart-editor)"
-                    " and OpenAI's API to interact in real-time with "
+                    " and [OpenAI's API](https://platform.openai.com/docs/api-reference) to interact in real-time with "
                     "a dataset by asking questions about its contents.",
                     className="lead",
+                    style={"fontSize": "1rem"},
                 ),
                 html.Hr(className="my-2"),
                 html.P(
@@ -50,7 +120,7 @@ def jumbotron():
             fluid=True,
             className="py-3",
         ),
-        className="p-3 bg-light rounded-3",
+        className="bg-light rounded-3",
     )
 
 

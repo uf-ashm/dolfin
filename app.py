@@ -28,7 +28,8 @@ server = app.server
 def layout():
     return dmc.MantineProvider(
         [
-            utils.jumbotron(),
+            utils.navbar(),
+            utils.mini_navbar_note(),
             page_container,
         ],
     )

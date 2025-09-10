@@ -15,6 +15,7 @@ register_page(__name__, path="/")
 
 layout = html.Div(
     [
+        utils.jumbotron(),
         dmc.Paper(
             [
                 html.Div(
@@ -31,7 +32,31 @@ layout = html.Div(
                 ),
                 html.Div(
                     [
-                        html.P("Ask about the dataset...", className="lead"),
+                        html.Div(
+                            [
+                                html.Img(
+                                    src="/assets/chat-gpt.png",
+                                    height="28px",
+                                    style={"marginRight": "1px"}
+                                ),
+                                html.P("Ask OpenAI", className="lead", style={"margin": 0}),
+                                html.Span(
+                                    "gpt-4o-mini",
+                                    style={
+                                        "background": "#edf1f2",
+                                        "color": "#333",
+                                        "borderRadius": "12px",
+                                        "padding": "2px 10px",
+                                        "fontSize": "0.85rem",
+                                        "marginLeft": "auto",
+                                        "fontWeight": 200,
+                                        "letterSpacing": "0.02em",
+                                        "alignSelf": "center"
+                                    }
+                                ),
+                            ],
+                            style={"display": "flex", "alignItems": "center", "marginBottom": "8px", "gap": "0.5rem"}
+                        ),
                         dmc.Textarea(
                             placeholder=random.choice(
                                 [
@@ -70,6 +95,15 @@ layout = html.Div(
         ),
         utils.upload_modal(),
         html.Div(id="current-charts"),
+        html.Div(
+            html.A(
+                "Chat gpt icons created by Freepik - Flaticon",
+                href="https://www.flaticon.com/free-icons/chat-gpt",
+                title="chat gpt icons",
+                target="_blank",
+                style={"fontSize": "0.9rem", "color": "#888", "textAlign": "center", "display": "block", "marginTop": "40px"}
+            )
+        ),
     ],
     id="padded",
 )
@@ -129,37 +163,48 @@ def save_figure_to_chart_editor(n):
 
 @callback(
     Output("current-charts", "children"),
-    Input("chart-editor", "figure"),
-    State("chart-editor", "dataSources"),
+    Input("add-to-layout", "n_clicks"),
+    State("chart-editor", "figure"),
     State("current-charts", "children"),
     prevent_initial_call=True,
 )
-def save_figure(figure, data, cur):
-    # cleaning data output for unnecessary columns
-    figure = dce.cleanDataFromFigure(
-        figure,
-    )
-    df = pd.DataFrame(data)
-    # create Figure object from dash-chart-editor figure
-    figure = dce.chartToPython(figure, df)
+def save_figure(n_clicks, figure, cur):
 
-    # Validate there's something to save
-    if figure.data:
-        item = [dmc.Paper([dcc.Graph(figure=figure)])]
+    if not figure:
+        return no_update
+    
+    data = figure.get("data", []) if isinstance(figure, dict) else getattr(figure, "data", [])
+    if not data:
+        return no_update
+    
+    def _has_points(trace):
+        # works for bar/scatter/line/area, heatmap, pie, etc.
+        if isinstance(trace, dict):
+            x, y, z, vals = trace.get("x"), trace.get("y"), trace.get("z"), trace.get("values")
+        else:
+            x, y, z, vals = getattr(trace, "x", None), getattr(trace, "y", None), getattr(trace, "z", None), getattr(trace, "values", None)
+        candidates = [x, y, z, vals]
+        return any(
+            (isinstance(c, (list, tuple)) and len(c) > 0) or getattr(c, "size", 0) > 0
+            for c in candidates if c is not None
+        )
 
-        header = [
-            html.Div(
-                [
-                    html.H2("Saved figures"),
-                    dcc.Clipboard(
-                        id="save-clip",
-                        title="Copy link",
-                        style={"margin-left": "10px"},
-                    ),
-                ],
-                style={"display": "flex"},
-            )
-        ]
-        return cur + item if cur else header + item
+    if not any(_has_points(t) for t in data):
+        return no_update
 
-    return no_update
+    item = [dmc.Paper([dcc.Graph(figure=figure)])]
+
+    header = [
+        html.Div(
+            [
+                html.H2("Saved figures"),
+                dcc.Clipboard(
+                    id="save-clip",
+                    title="Copy link",
+                    style={"margin-left": "10px"},
+                ),
+            ],
+            style={"display": "flex"},
+        )
+    ]
+    return cur + item if cur else header + item
